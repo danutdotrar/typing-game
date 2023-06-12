@@ -40,3 +40,29 @@ let score = 0;
 
 // Init time
 let time = 10;
+
+// Generate random word
+function getRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+// Add word to DOM
+function addWordToDOM() {
+    // Set the initialized randomWord to the getRandomWord
+    randomWord = getRandomWord();
+    word.innerHTML = randomWord;
+}
+
+addWordToDOM();
+
+// Event listeners
+text.addEventListener("input", (e) => {
+    const insertedText = e.target.value;
+
+    if (insertedText === randomWord) {
+        addWordToDOM();
+
+        // Clear
+        e.target.value = "";
+    }
+});
